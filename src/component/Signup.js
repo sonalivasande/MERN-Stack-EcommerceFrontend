@@ -159,7 +159,7 @@ class Signup extends Component {
       pincode,
     } = this.state;
     return (
-      <div className="container">
+      <div className="container-xxl">
         <Announcement />
         <Navbar />
         <div className="container mx-auto" style={{ marginTop: "10%" }}>

@@ -12,6 +12,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
+      login: true,
     };
   }
 
@@ -57,7 +58,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-xxl">
         <Announcement />
         <Navbar />
         <div className="col-md-5 mx-auto" style={{ marginTop: "10%" }}>
@@ -102,7 +103,7 @@ class Login extends Component {
                     className=" btn btn-block btn-primary"
                     style={{ marginTop: "2%" }}
                   >
-                    Login
+                  Login 
                   </button>
                 </div>
                 <div className="col-md-12 ">
