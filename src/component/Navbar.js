@@ -90,8 +90,8 @@ const Navbar = () => {
             <NavDropdown.Item href="/electronics">Electronics</NavDropdown.Item>
           </NavDropdown>
           {/* <MenuItem><Link to="/login">Login</Link></MenuItem> */}
-          <Nav.Link href="/login" id="basic-nav-dropdown">Login</Nav.Link>
-          <Nav.Link href="/register" id="basic-nav-dropdown">Register</Nav.Link>
+          {/* <Nav.Link href="/login" id="basic-nav-dropdown">Login</Nav.Link> */}
+          {/* <Nav.Link href="/register" id="basic-nav-dropdown">Register</Nav.Link> */}
 
           {localStorage.getItem('userDetails')?
           <Nav>
@@ -99,7 +99,7 @@ const Navbar = () => {
               <NavDropdown.Item onClick={() => Logout}>Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          :null}
+          :<Nav.Link  href="/login" id="basic-nav-dropdown">Login</Nav.Link >}
 
           <MenuItem>
             <Link to="/cart">

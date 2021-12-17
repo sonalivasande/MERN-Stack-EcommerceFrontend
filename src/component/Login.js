@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import Announcement from "./Announcement";
 import Navbar from "./Navbar";
@@ -6,32 +6,33 @@ import api from "../api/api";
 import { Navigate } from "react-router";
 
 class Login extends Component {
+
+ 
   constructor(props) {
     super(props);
 
     this.state = {
       email: "",
       password: "",
-      login: true,
     };
   }
 
   clickHandler = () => {
     // console.log(this.props);
+ 
     api.login
       .userget()
       .then((result) => {
         // console.log("userget =", result);
         result.filter((item) => {
           if (
-            (item.emailId === this.state.email ||
-              item.phoneNumber == this.state.email ||
-              item.username == this.state.email) &&
-            item.password === this.state.password
-          ) {
-            localStorage.setItem("userDetails", JSON.stringify(item));
-            alert("Login Successful");
-            window.location.replace("/");
+            (item.emailId === this.state.email || item.phoneNumber == this.state.email || item.username == this.state.email) 
+            && item.password === this.state.password) 
+            {
+              localStorage.setItem("userDetails", JSON.stringify(item));
+              alert("Login Successful");
+              window.location.replace("/");
+
             // this.context.router.push("/");
             // console.log(item)
             // <Navigate replace to="/login" />
@@ -58,7 +59,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container-xxl">
+      <div className="container">
         <Announcement />
         <Navbar />
         <div className="col-md-5 mx-auto" style={{ marginTop: "10%" }}>
@@ -103,7 +104,7 @@ class Login extends Component {
                     className=" btn btn-block btn-primary"
                     style={{ marginTop: "2%" }}
                   >
-                  Login 
+                    Login
                   </button>
                 </div>
                 <div className="col-md-12 ">
@@ -128,5 +129,6 @@ class Login extends Component {
     );
   }
 }
+
 
 export default Login;
