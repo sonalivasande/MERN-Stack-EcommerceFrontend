@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import api from "../../api/api";
 import Announcement from "../../component/Announcement";
@@ -26,14 +26,26 @@ const Select = styled.select`
   margin-right: 20px;
 `;
 const Option = styled.option``;
+
 const WomenProductList = () => {
+  const childCompRef = useRef();
+  var sortdata;
+  const handleChange = (event) => {
+    sortdata = event.target.value;
+    if (sortdata == 1 || sortdata == -1) {
+      childCompRef.current.getsortProductData(sortdata);
+    } else {
+      childCompRef.current.call();
+    }
+  };
+
   return (
     <Container>
       <Navbar />
       <Announcement />
       <Title>Women</Title>
       <FilterContainer>
-        <Filter>
+        {/* <Filter>
           <FilterText>Filter Products: </FilterText>
           <Select>
             <Option disabled selected>
@@ -53,17 +65,31 @@ const WomenProductList = () => {
             <Option>L</Option>
             <Option>XL</Option>
           </Select>
-        </Filter>
+        </Filter> */}
         <Filter>
           <FilterText>Sort Products: </FilterText>
-          <Select>
+          {/* <Select>
             <Option selected>Newest</Option>
             <Option>Price (asc)</Option>
             <Option>Price (desc)</Option>
+          </Select> */}
+          <Select defaultValue={"DEFAULT"} onChange={handleChange}>
+            {/* <Option key="1" value="DEFAULT">
+              Newest
+            </Option> */}
+
+            <Option key="2" value="1">
+              Price (asc)
+            </Option>
+
+            <Option key="3" value="-1">
+              Price (desc)
+            </Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <WomenProducts />
+      {/* <WomenProducts /> */}
+      <WomenProducts ref={childCompRef} />
     </Container>
   );
 };

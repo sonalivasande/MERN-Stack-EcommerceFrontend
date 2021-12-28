@@ -40,6 +40,20 @@ export default {
           return result.data;
         }),
   },
+
+  sortproductget: {
+    sortproductget: (data) =>
+      axios
+        .post(BASE_URL + "/product/sortproduct", data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((result) => {
+          return result.data;
+        }),
+  },
+
   order: {
     createorder: (data) =>
       axios
@@ -49,8 +63,8 @@ export default {
           },
         })
         .then((result) => {
-            // console.log("order=", data);
-            // console.log("order result=", result);
+            console.log("order=", data);
+            console.log("order result=", result);
           return result.data;
         }),
   },

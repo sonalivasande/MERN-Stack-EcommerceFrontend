@@ -96,7 +96,8 @@ const Navbar = () => {
           {localStorage.getItem('userDetails')?
           <Nav>
             <NavDropdown title={user && user.username} id="basic-nav-dropdown">
-              <NavDropdown.Item onClick={() => Logout}>Logout</NavDropdown.Item>
+              {/* <NavDropdown.Item onClick={() => Logout}>Logout</NavDropdown.Item> */}
+              <NavDropdown.Item onClick={Logout}>Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           :<Nav.Link  href="/login" id="basic-nav-dropdown">Login</Nav.Link >}
