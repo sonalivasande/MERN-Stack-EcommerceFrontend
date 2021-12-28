@@ -21,8 +21,8 @@ const FilterText = styled.span`
   margin-right: 20px;
 `;
 const Select = styled.select`
-    padding: 10px;
-    margin-right: 20px;
+  padding: 10px;
+  margin-right: 20px;
 `;
 const Option = styled.option``;
 
@@ -33,8 +33,6 @@ const MenProductList = () => {
     sortdata = event.target.value;
     if (sortdata == 1 || sortdata == -1) {
       childCompRef.current.getsortProductData(sortdata);
-    } else {
-      childCompRef.current.call();
     }
   };
   return (
@@ -68,19 +66,20 @@ const MenProductList = () => {
               <Option>Price (desc)</Option>
           </Select> */}
           <Select defaultValue={"DEFAULT"} onChange={handleChange}>
-            {/* <Option key="1" value="DEFAULT">
-              Newest
-            </Option> */}
+            <Option key="1" value="DEFAULT">
+              Most Relevent
+            </Option>
             <Option key="2" value="1">
-              Price (asc)
+              Price (Low to High)
             </Option>
             <Option key="3" value="-1">
-              Price (desc)
+              Price (High to Low)
             </Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Products />
+      {/* <Products /> */}
+      <Products ref={childCompRef} />
     </Container>
   );
 };
