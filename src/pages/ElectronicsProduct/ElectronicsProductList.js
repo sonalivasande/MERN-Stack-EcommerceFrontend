@@ -67,7 +67,7 @@ const ElectronicsProductList = () => {
           </Select> */}
           <Select defaultValue={"DEFAULT"} onChange={handleChange}>
             <Option key="1" value="DEFAULT">
-              Most Relevent
+              Select
             </Option>
             <Option key="2" value="1">
               Price (Low to High)

@@ -21,24 +21,43 @@ class Login extends Component {
     // console.log(this.props);
  
     api.login
-      .userget()
+      .userget({"Username":this.state.email,"Password":this.state.password})
       .then((result) => {
+        console.log(result)
         // console.log("userget =", result);
-        result.filter((item) => {
-          if (
-            (item.emailId === this.state.email || item.phoneNumber == this.state.email || item.username == this.state.email) 
-            && item.password === this.state.password) 
-            {
-              localStorage.setItem("userDetails", JSON.stringify(item));
+        // result.filter((item) => {
+        //   if (
+        //     (item.emailId === this.state.email || item.phoneNumber == this.state.email || item.username == this.state.email) 
+        //     && item.password === this.state.password) 
+        //     {
+        //       localStorage.setItem("userDetails", JSON.stringify(item));
+        //       alert("Login Successful");
+        //       window.location.replace("/");
+
+        //     // this.context.router.push("/");
+        //     // console.log(item)
+        //     // <Navigate replace to="/login" />
+        //   }
+        //   console.log("login item=", item);
+        // });
+        if(result.Authentication==="Failed")
+        {
+          alert("Login Failed");
+        }
+        else
+        {
+          localStorage.setItem("userDetails", JSON.stringify(result));
+          // var itemsData = JSON.parse(localStorage.getItem("react-use-cart"));
+    api.getcart.getcart({"userId":result._id,})
+    .then((cartData)=>{
+      JSON.parse(localStorage.setItem("react-use-cart",JSON.stringify(cartData.items)));
+      console.log(cartData)
+
+    })
               alert("Login Successful");
               window.location.replace("/");
 
-            // this.context.router.push("/");
-            // console.log(item)
-            // <Navigate replace to="/login" />
-          }
-          console.log("login item=", item);
-        });
+        }
       })
       .catch((error) => {
         console.log("error=", error);

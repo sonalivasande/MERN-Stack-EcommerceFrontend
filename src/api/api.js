@@ -17,9 +17,9 @@ export default {
         }),
   },
   login: {
-    userget: () =>
+    userget: (Logindata) =>
       axios
-        .get(BASE_URL + "/user", {
+        .post(BASE_URL + "/user", Logindata,{
           headers: {
             "Content-Type": "application/json",
           },
@@ -28,32 +28,42 @@ export default {
           return result.data;
         }),
   },
+  // productget: {
+  //   productget: () =>
+  //     axios
+  //       .get(BASE_URL + "/product", {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       })
+  //       .then((result) => {
+  //         return result.data;
+  //       }),
+  // },
   productget: {
-    productget: () =>
+    productget: (data) =>
       axios
-        .get(BASE_URL + "/product", {
+        .post(BASE_URL + "/product",data, {
           headers: {
-            "Content-Type": "application/json",
-          },
+                     "Content-Type": "application/json",
+               }
         })
         .then((result) => {
           return result.data;
         }),
   },
-
   sortproductget: {
     sortproductget: (data) =>
       axios
-        .post(BASE_URL + "/product/sortproduct", data, {
+        .post(BASE_URL + "/product/sortProduct",data, {
           headers: {
-            "Content-Type": "application/json",
-          },
+                     "Content-Type": "application/json",
+               }
         })
         .then((result) => {
           return result.data;
         }),
   },
-
   order: {
     createorder: (data) =>
       axios
@@ -63,9 +73,41 @@ export default {
           },
         })
         .then((result) => {
-            console.log("order=", data);
-            console.log("order result=", result);
+            // console.log("order=", data);
+            // console.log("order result=", result);
           return result.data;
         }),
   },
+
+addcart: {
+  addcart: (data) =>
+    axios
+      .post(BASE_URL + "/cart/addCart", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((result) => {
+        console.log(data)
+          // console.log("order=", data);
+          // console.log("order result=", result);
+        return result.data;
+      }),
+},
+getcart: {
+  getcart: (data) =>
+    axios
+      .post(BASE_URL + "/cart/", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((result) => {
+        console.log(data)
+          // console.log("order=", data);
+          // console.log("order result=", result);
+        return result.data;
+      }),
+},
 }
+

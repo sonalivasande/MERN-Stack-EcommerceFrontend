@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { Nav, NavDropdown } from "react-bootstrap";
 import { useCart } from "react-use-cart";
+import api from "../api/api";
 
 const Container = styled.div`
   height: 60px;
@@ -61,6 +62,9 @@ const Navbar = () => {
   let user = JSON.parse(localStorage.getItem('userDetails'));
   const navigate = useNavigate();
   const Logout = () =>{
+    var userData = JSON.parse(localStorage.getItem("userDetails"));
+    var itemsData = JSON.parse(localStorage.getItem("react-use-cart"));
+    api.addcart.addcart({"userId":userData._id,"items":itemsData})
     localStorage.clear();
     navigate('/');
   }
