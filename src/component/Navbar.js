@@ -72,13 +72,13 @@ const Navbar = () => {
   return (
     <Container>
       <Wrapper>
-        <Left>
+        {/* <Left>
           <Language>EN</Language>
           <SearchContainer>
             <Input placeholder="Search Product" />
             <Search style={{ color: "gray", fontSize: 15 }} />
           </SearchContainer>
-        </Left>
+        </Left> */}
         <Center>
           <Logo>
             <Link to="/" style={{ color: "black", textDecoration: "none" }}>

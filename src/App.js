@@ -9,6 +9,7 @@ import MenProductList from "./pages/MenProduct/MenProductList";
 import WomenProductList from "./pages/WomenProduct/WomenProductList";
 import ElectronicsProductList from "./pages/ElectronicsProduct/ElectronicsProductList";
 import Cart from "./pages/Cart/Cart";
+import ProductView from "./pages/ProductView";
 import { CartProvider } from "react-use-cart";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route exact path="/womenshop" element={<WomenProductList />}></Route>
             <Route exact path="/electronics" element={<ElectronicsProductList />}></Route>
             <Route exact path="/cart" element={<Cart />}></Route>
+            <Route exact path="/product" element={<ProductView />}></Route>
             {/* <Route exact path="/productdetails/:id" element={<ProductDetails />}></Route> */}
           </Routes>
         </Fragment>

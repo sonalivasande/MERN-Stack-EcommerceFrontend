@@ -98,9 +98,9 @@ const Product = ({ item }) => {
         >
           <ShoppingCartOutlined />
         </Icon>
-        {/* <Icon data-toggle="tooltip" data-placement="bottom">
+        <Icon data-toggle="tooltip" data-placement="bottom">
           <SearchOutlined />
-        </Icon> */}
+        </Icon>
         {/* <div className="col-12">{item.productName}</div> */}
       </Info>
       {/* <div className="col-12">{item.productName}</div> */}
