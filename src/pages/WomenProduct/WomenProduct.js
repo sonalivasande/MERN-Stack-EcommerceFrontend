@@ -73,6 +73,11 @@ var userData = JSON.parse(localStorage.getItem("userDetails"));
 
 useEffect(() => {}, [item]);
 
+  const searchItem = (item) => {
+    console.log(item);
+    window.location.replace(`/product/${item._id}`);
+  };
+
 // const buynowfun = () => {
 //   var data = {
 //     // id: userData.id,
@@ -124,7 +129,7 @@ return (
       >
         <ShoppingCartOutlined />
       </Icon>
-      {/* <Icon><SearchOutlined /></Icon> */}
+      <Icon onClick={() => searchItem(item)}><SearchOutlined /></Icon>
       {/* <Icon><FavoriteBorderOutlined /></Icon> */}
     </Info>
   </Container>

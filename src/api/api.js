@@ -28,18 +28,18 @@ export default {
           return result.data;
         }),
   },
-  // productget: {
-  //   productget: () =>
-  //     axios
-  //       .get(BASE_URL + "/product", {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       })
-  //       .then((result) => {
-  //         return result.data;
-  //       }),
-  // },
+  productgetbyid: {
+    productgetid: (id) =>
+      axios
+        .get(BASE_URL + `/product/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((result) => {
+          return result.data;
+        }),
+  },
   productget: {
     productget: (data) =>
       axios

@@ -80,6 +80,13 @@ const Product = ({ item }) => {
 
   useEffect(() => {}, [item]);
 
+  const searchItem = (item) => {
+    console.log(item);
+    window.location.replace(`/product/${item._id}`);
+  };
+
+  
+
   return (
     <Container>
       {/* <Circle /> */}
@@ -98,9 +105,13 @@ const Product = ({ item }) => {
         >
           <ShoppingCartOutlined />
         </Icon>
-        {/* <Icon data-toggle="tooltip" data-placement="bottom">
+        <Icon
+          data-toggle="tooltip"
+          data-placement="bottom"
+          onClick={() => searchItem(item)}
+        >
           <SearchOutlined />
-        </Icon> */}
+        </Icon>
         {/* <div className="col-12">{item.productName}</div> */}
       </Info>
       {/* <div className="col-12">{item.productName}</div> */}

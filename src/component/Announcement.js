@@ -12,7 +12,7 @@ font-weight: 500;
 `;
 
 const Announcement = () => {
-  return <Container>Super Deal</Container>;
+  return <Container><marquee>SUPER DEAL</marquee></Container>;
 };
 
 export default Announcement;

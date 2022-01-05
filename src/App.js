@@ -28,7 +28,7 @@ function App() {
             <Route exact path="/womenshop" element={<WomenProductList />}></Route>
             <Route exact path="/electronics" element={<ElectronicsProductList />}></Route>
             <Route exact path="/cart" element={<Cart />}></Route>
-            <Route exact path="/product" element={<ProductView />}></Route>
+            <Route exact path="/product/:id" element={<ProductView />}></Route>
             {/* <Route exact path="/productdetails/:id" element={<ProductDetails />}></Route> */}
           </Routes>
         </Fragment>

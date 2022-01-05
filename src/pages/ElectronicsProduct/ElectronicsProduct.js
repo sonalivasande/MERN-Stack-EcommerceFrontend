@@ -81,6 +81,11 @@ const { addItem } = useCart();
 
 useEffect(() => {}, [item]);
 
+const searchItem = (item) => {
+  console.log(item);
+  window.location.replace(`/product/${item._id}`);
+};
+
 return (
   <Container>
     {/* <Circle /> */}
@@ -99,6 +104,7 @@ return (
       >
         <ShoppingCartOutlined />
       </Icon>
+      <Icon onClick={() => searchItem(item)}><SearchOutlined /></Icon>
     </Info>
   </Container>
 );
