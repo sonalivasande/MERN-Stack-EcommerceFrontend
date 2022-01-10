@@ -127,7 +127,6 @@ const ProductView = () => {
   const params = useParams();
 
   useEffect(() => {
-    console.log(params.id);
     api.productgetbyid
       .productgetid(params.id)
       .then((result) => {
@@ -149,6 +148,8 @@ const ProductView = () => {
     <Container>
       <Navbar />
       <Announcement />
+      {/* <Button onclick="window.history.go(-1); return false;">Go Back</Button> */}
+      {/* <button onClick={() => window.history.back()}>Go Back</button> */}
       <Wrapper>
         <ImgContainer>
           <Image src={singleProduct.productImage} />

@@ -81,8 +81,9 @@ const Product = ({ item }) => {
   useEffect(() => {}, [item]);
 
   const searchItem = (item) => {
-    console.log(item);
-    window.location.replace(`/product/${item._id}`);
+    // console.log(item);
+    window.location.assign(`/product/${item._id}`);
+    // history.push(`/product/${item._id}`)
   };
 
   
