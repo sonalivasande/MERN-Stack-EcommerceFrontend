@@ -41,7 +41,7 @@ class Signup extends Component {
 
   validForm = () => {
     var isValid = true;
-    // var pattern = " ^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$.";
+    var pattern = " ^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$.";
     var epattern = "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$";
     var phonepattern = "[a-z0-9.-]";
     console.log(this.state.firstname);
@@ -49,7 +49,7 @@ class Signup extends Component {
     if (this.state.firstname.length === 0) {
       console.log(this.state.firstname.length);
       this.setState({
-        firstnameErr: "First name should not be empty..",
+        firstnameErr: "First name should not be empty",
       });
       isValid = false;
     } else if (this.state.firstname.length > 1) {
@@ -63,7 +63,7 @@ class Signup extends Component {
 
     if (this.state.lastname.length === 0) {
       this.setState({
-        lastnameErr: "Last name should not be empty..",
+        lastnameErr: "Last name should not be empty",
       });
       isValid = false;
     } else if (this.state.lastname.length > 1) {
@@ -75,7 +75,7 @@ class Signup extends Component {
 
     if (!this.state.email.match(epattern)) {
       this.setState({
-        emailErr: "Please Enter valid mail id..",
+        emailErr: "Please Enter valid mail id",
       });
       isValid = false;
     } else if (this.state.email.match(epattern)) {
@@ -97,10 +97,28 @@ class Signup extends Component {
       isValid = true;
     }
 
+    if (!this.state.password.match(pattern)) {
+      console.log(this.state.password);
+      this.setState({
+        passwordErr:
+          "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
+      });
+      isValid = false;
+    } else if (this.state.password.match(pattern)) {
+      this.setState({
+        passwordErr: "",
+      });
+      isValid = true;
+    }
+
     return isValid;
   };
 
   submitData = () => {
+    const validForm = this.validForm();
+    var t = true;
+
+    if(validForm === true){
     var data = {
       firstName: this.state.firstname,
       lastName: this.state.lastname,
@@ -129,6 +147,7 @@ class Signup extends Component {
         console.log("signup err=====", error);
         alert("Your registration was unsuccessful.");
       });
+    }
   };
 
   changeHandler = (e) => {
@@ -174,7 +193,7 @@ class Signup extends Component {
             autoComplete="off"
             className="row g-3"
           >
-            <div className="form-group col-md-4">
+            <div className="form-group col-md-6">
               <label>First Name</label>
               <input
                 type="text"
@@ -186,7 +205,7 @@ class Signup extends Component {
               />
               <pre style={{ color: "red" }}>{this.state.firstnameErr}</pre>
             </div>
-            <div className="form-group col-md-4">
+            <div className="form-group col-md-6">
               <label>Last Name</label>
               <input
                 type="text"
@@ -198,7 +217,7 @@ class Signup extends Component {
               />
               <pre style={{ color: "red" }}>{this.state.lastnameErr}</pre>
             </div>
-            <div className="form-group col-md-4">
+            {/* <div className="form-group col-md-4">
               <label>Username</label>
               <input
                 type="username"
@@ -209,7 +228,7 @@ class Signup extends Component {
                 placeholder="Enter Username"
               />
               <pre style={{ color: "red" }}>{this.state.usernameErr}</pre>
-            </div>
+            </div> */}
             <div className="form-group col-md-6">
               <label>Email Address</label>
               <input
