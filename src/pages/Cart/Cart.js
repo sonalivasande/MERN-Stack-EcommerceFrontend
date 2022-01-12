@@ -4,6 +4,7 @@ import Announcement from "../../component/Announcement";
 import Navbar from "../../component/Navbar";
 import api from "../../api/api";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const {
@@ -116,9 +117,9 @@ const Cart = () => {
             <h2>Total Price: ₹ {cartTotal}</h2>
           </div>
           <div className="col-auto">
-            <button className="btn btn-danger ms-2" onClick={() => emptyCart()}>
+            <Link exact to="/"><button className="btn btn-danger ms-2" onClick={() => emptyCart()}>
               Clear Cart
-            </button>
+            </button></Link>
             <button className="btn btn-primary m-2" onClick={() => Checkout()}>
               Checkout
             </button>
