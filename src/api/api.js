@@ -109,5 +109,20 @@ getcart: {
         return result.data;
       }),
 },
+
+review: {
+  createreview: (data) =>
+    axios
+      .post(BASE_URL + "/review/createReview", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((result) => {
+          console.log("order=", data);
+          console.log("order result=", result);
+        return result.data;
+      }),
+},
 }
 

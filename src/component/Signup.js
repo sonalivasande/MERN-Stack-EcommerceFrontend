@@ -1510,25 +1510,14 @@ class Signup extends Component {
       isValid = true;
     }
 
-    // if (!this.state.password.match(pattern)) {
-    //   console.log(this.state.password);
-    //   this.setState({
-    //     passwordErr:
-    //       "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
-    //   });
-    //   isValid = false;
-    // } else if (this.state.password.match(pattern)) {
-    //   this.setState({
-    //     passwordErr: "",
-    //   });
-    //   isValid = true;
-    // }
-    if (this.state.password.length === 0) {
+    if (!this.state.password.match(pattern)) {
+      console.log(this.state.password);
       this.setState({
-        passwordErr: "Please enter valid password",
+        passwordErr:
+          "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
       });
       isValid = false;
-    } else if (this.state.password.length > 1) {
+    } else if (this.state.password.match(pattern)) {
       this.setState({
         passwordErr: "",
       });
@@ -1545,50 +1534,50 @@ class Signup extends Component {
       });
       isValid = true;
     }
-    // if (this.state.country.length === 0) {
-    //   this.setState({
-    //     countryErr: "Please select country",
-    //   });
-    //   isValid = false;
-    // } else if (this.state.country.length > 1) {
-    //   this.setState({
-    //     countryErr: "",
-    //   });
-    //   isValid = true;
-    // }
-    // if (this.state.state.length === 0) {
-    //   this.setState({
-    //     stateErr: "Please select state",
-    //   });
-    //   isValid = false;
-    // } else if (this.state.state.length > 1) {
-    //   this.setState({
-    //     stateErr: "",
-    //   });
-    //   isValid = true;
-    // }
-    // if (this.state.city.length === 0) {
-    //   this.setState({
-    //     cityErr: "Please select city",
-    //   });
-    //   isValid = false;
-    // } else if (this.state.city.length > 1) {
-    //   this.setState({
-    //     cityErr: "",
-    //   });
-    //   isValid = true;
-    // }
-    // if (this.state.pincode.length === 0) {
-    //   this.setState({
-    //     pincodeErr: "Please enter pincode",
-    //   });
-    //   isValid = false;
-    // } else if (this.state.pincode.length > 1) {
-    //   this.setState({
-    //     pincodeErr: "",
-    //   });
-    //   isValid = true;
-    // }
+    if (this.state.selectedCountry.length === 0) {
+      this.setState({
+        countryErr: "Please select country",
+      });
+      isValid = false;
+    } else if (this.state.selectedCountry.length > 1) {
+      this.setState({
+        countryErr: "",
+      });
+      isValid = true;
+    }
+    if (this.state.selectedState.length === 0) {
+      this.setState({
+        stateErr: "Please select state",
+      });
+      isValid = false;
+    } else if (this.state.selectedState.length > 1) {
+      this.setState({
+        stateErr: "",
+      });
+      isValid = true;
+    }
+    if (this.state.selectedCity.length === 0) {
+      this.setState({
+        cityErr: "Please select city",
+      });
+      isValid = false;
+    } else if (this.state.selectedCity.length > 1) {
+      this.setState({
+        cityErr: "",
+      });
+      isValid = true;
+    }
+    if (this.state.pincode.length === 0) {
+      this.setState({
+        pincodeErr: "Please enter pincode",
+      });
+      isValid = false;
+    } else if (this.state.pincode.length > 1) {
+      this.setState({
+        pincodeErr: "",
+      });
+      isValid = true;
+    }
 
     return isValid;
   };
@@ -1620,7 +1609,7 @@ class Signup extends Component {
         .then((result) => {
           console.log("signup api==", result);
           alert("Thank you! Your registration was successful!");
-          window.location.replace("/login");
+          // window.location.replace("/login");
         })
         .catch((error) => {
           console.log("signup err=====", error);
@@ -1707,6 +1696,7 @@ class Signup extends Component {
               />
               <pre style={{ color: "red" }}>{this.state.firstnameErr}</pre>
             </div>
+            
             <div className="form-group col-md-4">
               <label>Last Name</label>
               <input
@@ -1719,6 +1709,7 @@ class Signup extends Component {
               />
               <pre style={{ color: "red" }}>{this.state.lastnameErr}</pre>
             </div>
+
             <div className="form-group col-md-4">
               <label>Username</label>
               <input
@@ -1731,6 +1722,7 @@ class Signup extends Component {
               />
               <pre style={{ color: "red" }}>{this.state.usernameErr}</pre>
             </div>
+
             <div className="form-group col-md-6">
               <label>Email Address</label>
               <input
@@ -1741,7 +1733,6 @@ class Signup extends Component {
                 className="form-control"
                 placeholder="Enter Email Address"
               />
-
               <pre style={{ color: "red" }}>{this.state.emailErr}</pre>
             </div>
             <div className="form-group col-md-6">
@@ -1754,9 +1745,9 @@ class Signup extends Component {
                 className="form-control"
                 placeholder="Enter Phone Number"
               />
-
               <pre style={{ color: "red" }}>{this.state.phoneErr}</pre>
             </div>
+
             <div className="form-group col-md-6">
               <label>Password</label>
               <input
@@ -1769,6 +1760,7 @@ class Signup extends Component {
               />
               <pre style={{ color: "red" }}>{this.state.passwordErr}</pre>
             </div>
+
             <div className="form-group col-md-6">
               <label>Confirm Password</label>
               <input
@@ -1783,6 +1775,7 @@ class Signup extends Component {
                 {this.state.confirmpasswordErr}
               </pre>
             </div>
+
             <div className="form-group col-md-6">
               <label>Age</label>
               <input
@@ -1795,20 +1788,9 @@ class Signup extends Component {
               />
               <pre style={{ color: "red" }}>{this.state.ageErr}</pre>
             </div>
-            {/* <div className="form-group col-md-6">
-              <label>Gender</label>
-              <input
-                type="gender"
-                name="gender"
-                value={gender}
-                onChange={this.changeHandler}
-                className="form-control"
-                placeholder="Enter Gender"
-              />
-              <pre style={{ color: "red" }}>{this.state.genderErr}</pre>
-            </div> */}
+
             <div className="form-group col-md-6">
-              <label for="gender">Select you gender</label>
+              <label for="gender">Select your Gender</label>
               <select
                 className="form-select"
                 name="gender"
@@ -1824,19 +1806,6 @@ class Signup extends Component {
               </select>
               <pre style={{ color: "red" }}>{this.state.genderErr}</pre>
             </div>
-
-            {/* <div className="form-group col-md-3">
-              <label>Country</label>
-              <input
-                type="country"
-                name="country"
-                value={country}
-                onChange={this.changeHandler}
-                className="form-control"
-                placeholder="Enter Country"
-              />
-              <pre style={{ color: "red" }}>{this.state.countryErr}</pre>
-            </div> */}
 
             <div className="form-group col-md-3">
               <label>Country</label>
@@ -1885,30 +1854,7 @@ class Signup extends Component {
               </select>
               <pre style={{ color: "red" }}>{this.state.cityErr}</pre>
             </div>
-            {/* <div className="form-group col-md-3">
-              <label>State</label>
-              <input
-                type="state"
-                name="state"
-                value={state}
-                onChange={this.changeHandler}
-                className="form-control"
-                placeholder="Enter State"
-              />
-              <pre style={{ color: "red" }}>{this.state.stateErr}</pre>
-            </div>
-            <div className="form-group col-md-3">
-              <label>City</label>
-              <input
-                type="city"
-                name="city"
-                value={city}
-                onChange={this.changeHandler}
-                className="form-control"
-                placeholder="Enter City"
-              />
-              <pre style={{ color: "red" }}>{this.state.cityErr}</pre>
-            </div> */}
+
             <div className="form-group col-md-3">
               <label>Pincode</label>
               <input

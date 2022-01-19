@@ -8,6 +8,7 @@ import Announcement from "../component/Announcement";
 import Footer from "../component/Footer";
 import Navbar from "../component/Navbar";
 import { mobile } from "../responsive";
+import RatingReview from "./Rating/RatingReview";
 
 const Container = styled.div``;
 
@@ -107,11 +108,12 @@ const Count = styled.span`
 `;
 
 const Button = styled.button`
-  padding: 15px;
+  padding: 10px;
   border: 2px solid teal;
   background-color: white;
   cursor: pointer;
   font-weight: 500;
+  border-radius: 5px;
   &:hover {
     background-color: #f8f4f4;
   }
@@ -183,8 +185,9 @@ const ProductView = () => {
               <Count>{singleProduct.quantity}</Count>
               <Add onClick={() => updateItemQuantity(singleProduct.id, singleProduct.quantity  + 1)}/>
             </AmountContainer> */}
-            <Button onClick={() => addItem(singleProduct)}>ADD TO CART</Button>
+            <Button onClick={() => addItem(singleProduct)}>Add To Cart</Button>
           </AddContainer>
+          <RatingReview item={singleProduct}/>
         </InfoContainer>
       </Wrapper>
       <Footer />
