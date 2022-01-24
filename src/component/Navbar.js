@@ -109,6 +109,7 @@ const Navbar = () => {
         <Right>
           {/* <MenuItem><Link to="/shop">Shop</Link></MenuItem> */}
           <NavDropdown title="Shop" id="basic-nav-dropdown">
+          <NavDropdown.Item href="/shopall">Shop All</NavDropdown.Item>
             <NavDropdown.Item href="/womenshop">Women Fashion</NavDropdown.Item>
             <NavDropdown.Item href="/menshop">Men Fashion</NavDropdown.Item>
             <NavDropdown.Item href="/electronics">Electronics</NavDropdown.Item>

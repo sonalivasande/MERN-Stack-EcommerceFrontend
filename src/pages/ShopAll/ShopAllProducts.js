@@ -1,8 +1,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import styled from "styled-components";
 import api from "../../api/api";
-import { womenProducts } from "../../data";
-import WomenProduct from "./WomenProduct";
+import ShopAllProduct from "./ShopAllProduct";
 
 const Container = styled.div`
   padding: 20px;
@@ -16,7 +15,7 @@ const WomenProducts = forwardRef((props, ref) => {
     getsortProductData(data) {
       var Data = Number(data);
       api.sortproductget
-        .sortproductget({ category:{productCategory: "Women"}, sort: Data })
+        .sortproductget({ category:{}, sort: Data })
         .then((result) => {
           console.log(result);
           setWomenList(result);
@@ -35,21 +34,10 @@ const WomenProducts = forwardRef((props, ref) => {
 
   const getProductData = () => {
     api.productget
-      .productget()
+      .productget({category:{}})
       .then((result) => {
-        if (result.status) {
-        }
-        const filteredData = result.filter((item) => {
-          // return Object.keys(item.productCategory).some((key) =>
-          // item.productCategory.toString().toLowerCase().includes(lowercasedValue)
-          // );
-          if (item.productCategory === "Women") {
-            // item.id = item._id;
-            // item.price = item.productPrice;
-            return item;
-          }
-        });
-        setWomenList(filteredData);
+        console.log(result);
+        setWomenList(result);
       })
       .catch((error) => {
         console.log(error);
@@ -61,7 +49,7 @@ const WomenProducts = forwardRef((props, ref) => {
       {womenList.map((item) => (
         item.id = item._id,
         item.price = item.productPrice,
-        <WomenProduct item={item} key={item.id} />
+        <ShopAllProduct item={item} key={item.id} />
       ))}
     </Container>
   );

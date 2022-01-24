@@ -16,7 +16,7 @@ const Products = forwardRef((props, ref) => {
     getsortProductData(data) {
       var Data = Number(data);
       api.sortproductget
-        .sortproductget({ productCategory: "Men", sort: Data })
+        .sortproductget({ category:{productCategory: "Men"}, sort: Data })
         .then((result) => {
           console.log(result);
           setMenList(result);
